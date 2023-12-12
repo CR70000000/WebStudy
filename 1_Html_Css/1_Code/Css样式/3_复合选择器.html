@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=000000000, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div span {
+            color: brown;
+        }
+        div p > span {
+            color: blue;
+        }
+        h1,
+        h2,
+        h3 {
+            background-color: aqua;
+        }
+        p.text {
+            text-align: center;
+        }
+        a:hover{
+            color: gray;
+        }
+    </style>
 </head>
 <body>
-    
+    <span>我是span 标签</span>
+    <div>
+        <span>我是后代选择器</span>
+        <p>
+            <span>我是孙子</span>
+        </p>
+    </div>
+    <hr>
+    <h1>第一个</h1>
+    <h2>第二个</h2>
+    <h3>第三个</h3>
+    <hr>
+    <p class="text">p标签,使用了类选择器</p>
+    <p>p标签</p>
+    <div class="class">div标签,使用了类选择器</div>
+    <hr>
+    <a href="#">伪类选择器</a>
 </body>
 </html>
