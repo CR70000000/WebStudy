@@ -3,5 +3,5 @@
 
 # VSCode Wmmet写法
  - HTML
-  ![HTML简写](../1_Html_Css/2_images/HTML.png)
+  ![HTML简写](./HTML.png)
  - CSS
