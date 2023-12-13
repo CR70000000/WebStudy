@@ -14,26 +14,25 @@
  - 交集选择器
    - ```选择器1选择器2 {CSS属性}```
    - 选择器连写，不用隔开
-   - 选中同时满足多个条件的元素 
+   - 选中同时满足多个条件的元素
  - 伪类选择器
-  - ```选择器:hover {CSS属性}```
-### 伪类选择器（超链接状态）
- 1. `:link`     访问前
- 2. `:visited`  访问后
- 3. `:hover`    鼠标悬停
- 4. `:active`   点击时
+   - ```选择器:hover {CSS属性}```
+ - 伪类选择器（超链接状态）
+   1. `:link`     访问前
+   2. `:visited`  访问后
+   3. `:hover`    鼠标悬停
+   4. `:active`   点击时
+ - 结构伪类选择器
+   - `E:first-child`  查找第一个E元素
+   - `E:last-child`   查找最后一个E元素
+   - `E:nth-child(N)` 查找第N个E元素（第一个元素N值为1）
+   - `E:nth-child(公式)` 
+   ![公式](../2_images/Nth公式.png)
+ - 伪元素选择器
+   - `E::before` 在E元素里面最`前面`添加一个伪元素 
+   - `E::after`  在E元素里面最`后面`添加一个伪元素
+   ![伪元素选择器](../2_images/伪元素选择器.png)
 
-### 结构伪类选择器
- - `E:first-child`  查找第一个E元素
- - `E:last-child`   查找最后一个E元素
- - `E:nth-child(N)` 查找第N个E元素（第一个元素N值为1）
- - `E:nth-child(公式)` 
- ![公式](../2_images/Nth公式.png)
-
-### 伪元素选择器
- - `E::before` 在E元素里面最`前面`添加一个伪元素 
- - `E::after`  在E元素里面最`后面`添加一个伪元素
- ![伪元素选择器](../2_images/伪元素选择器.png)
 ### 背景属性
  - 背景色`background-color`
  - 背景图`background-image`
@@ -75,3 +74,47 @@
  - `block`        块级
  - `inline-block` 行内块
  - `inline`       行内
+
+### 盒子模型
+![盒子模型-组成](../2_images/盒子模型.png)
+ - 盒子模型被border和padding撑大解决方法
+   1. 手动计算，减去border/padding的尺寸
+   2. 内减模式:`box-sizing:border-box`
+
+ - margin不会撑大盒子
+   - 左右居中:`margin: 上下 auto`
+
+ - 清除标签默认样式
+   - ```css
+     *{
+       margin: 0;
+       padding: 0;
+       /* 盒子内减模式，避免被border和padding撑大 */
+       box-sizing: border-box;
+       /* 去掉列表的项目符号 */
+      list-style: none;
+       /* 去掉a标签的下划线 */
+       text-decoration: none;
+     }
+   ```
+
+ - 元素溢出`overflow`
+   - hidden 溢出隐藏
+   - scroll 溢出滚动（无论是否溢出，都显示滚动调）
+   - auto 溢出滚动（溢出才显示滚动调）
+
+ - 塌陷问题
+   - 父子级标签，子级添加上外边距，会产生塌陷；导致父子级一起向下移动
+   - 解决方法
+     1. 取消父级`margin`，父级设置`padding`
+     2. 父级设置`overflow:hidden`
+     3. 父级设置`border-top`
+
+ - 圆角边框`border-radius`
+   - 圆形：`border-radius:50%/高和宽的一半`
+   - 胶囊：`border-radius:高的一般`
+
+ - 盒子阴影`box-shadow`
+   - X Y 模糊半径 扩散半径 颜色 内外阴影(内inset/默认外)
+
+### 
