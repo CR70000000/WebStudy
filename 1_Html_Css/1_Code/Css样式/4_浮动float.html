@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        } */
+
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .out {
+            background-color: rosybrown;
+            /* height: 300px; */
+            /* overflow:hidden; */
+        }
+
+        .out .A {
+            float: left;
+            height: 100px;
+            width: 200px;
+            background-color: #17244e;
+        }
+
+        .out .B {
+            float: right;
+            height: 100px;
+            width: 200px;
+            background-color: #1ea84c;
+        }
+
+        .C {
+            height: 100px;
+            width: 200px;
+            background-color: #e600ff;
+        }
+
+        /* .out .clearfix{
+            clear:both
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="out clearfix">
+        <div class="A">1</div>
+        <div class="B">2</div>
+        <!-- <div class="clearfix"></div> -->
+    </div>
+    <div class="C">3</div>
+</body>
+
+</html>

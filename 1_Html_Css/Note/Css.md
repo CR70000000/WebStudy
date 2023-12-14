@@ -80,12 +80,10 @@
  - 盒子模型被border和padding撑大解决方法
    1. 手动计算，减去border/padding的尺寸
    2. 内减模式:`box-sizing:border-box`
-
  - margin不会撑大盒子
    - 左右居中:`margin: 上下 auto`
-
  - 清除标签默认样式
-   - ```css
+    ```css
      *{
        margin: 0;
        padding: 0;
@@ -97,24 +95,67 @@
        text-decoration: none;
      }
    ```
-
  - 元素溢出`overflow`
    - hidden 溢出隐藏
    - scroll 溢出滚动（无论是否溢出，都显示滚动调）
    - auto 溢出滚动（溢出才显示滚动调）
-
  - 塌陷问题
    - 父子级标签，子级添加上外边距，会产生塌陷；导致父子级一起向下移动
    - 解决方法
      1. 取消父级`margin`，父级设置`padding`
      2. 父级设置`overflow:hidden`
      3. 父级设置`border-top`
-
  - 圆角边框`border-radius`
    - 圆形：`border-radius:50%/高和宽的一半`
    - 胶囊：`border-radius:高的一般`
-
  - 盒子阴影`box-shadow`
    - X Y 模糊半径 扩散半径 颜色 内外阴影(内inset/默认外)
 
-### 
+### 浮动`float`
+ - `left`  左对齐
+ - `right` 右对齐
+
+#### 清除浮动
+   1. 额外标签法：在父元素内容的最后添加一个块级元素`div#clearfix`，设置CSS属性`clear: both`
+   2. 单伪元素法：
+      ```css
+       .clearfix::after {
+        /* 伪元素必须要有content属性 */
+        content:"";
+        display:block;
+        clear:both;
+       }
+      ```
+   3. 双伪元素法
+      ```css
+       /* before 解决外边距塌陷 */
+       .clearfix::before,
+       .clearfix::after {
+        /* 伪元素必须要有content属性 */
+       content:"";
+       display:table;
+       }
+       /* after 清除浮动 */
+       .clearfix::after {
+         clear:both;
+       }
+      ```
+   4. 父级元素添加CSS属性 `overflow:hidden`
+
+### Flex布局`display:flex;`
+ ![Flex-组成](../2_images/Flex-组成.png)
+ ![Flex布局属性](../2_images/Flex布局属性.png)
+ - 创建Flex容器 `display:flex`
+ - 主轴对齐方式 `justify-content`
+   ![主轴对齐方式](../2_images/Flex主轴对齐方式.png)
+ - 侧轴对齐方式 `align-items`
+ - 某个弹性盒子侧轴对齐方式 `align-self`
+   ![侧轴对齐方式](../2_images/侧轴对齐方式.png)
+ - 修改主轴方向 `flex-direction`
+   ![修改主轴方向](../2_images/修改主轴方向.png)
+ - 弹性伸缩比 `flex`
+   ![弹性伸缩比](../2_images/弹性伸缩比.png)
+ - 弹性盒子换行 `flex-wrap`
+   ![弹性盒子换行](../2_images/弹性盒子换行.png)
+ - 行对齐方式 `align-content`
+   ![行对齐方式](../2_images/行对齐方式.png)
