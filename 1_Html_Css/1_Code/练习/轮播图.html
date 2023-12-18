@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../3_iconfont/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .banner {
+            position: relative;
+            margin: 100px auto;
+            width: 564px;
+            height: 315px;
+
+            /* 溢出内容隐藏 */
+            overflow: hidden;
+        }
+
+        .banner ul {
+            display: flex;
+        }
+
+        .banner img {
+            /* 下面两种方法都可以清除图片下面的空白 */
+            /* display: block; */
+            vertical-align: middle;
+
+            width: 564px;
+            border-radius: 10px;
+        }
+
+        /* 箭头 */
+
+        .banner .prev,
+        .banner .next {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 30px;
+            background-color: rgba(0,0,0,0.3);
+            color: #fff;
+            line-height: 30px;
+        }
+
+        .banner:hover .prev,
+        .banner:hover .next {
+            display: block;
+        }
+
+        .banner .prev {
+            left: 0;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .banner .next {
+            right: 0;
+            border-radius: 15px 0 0 15px;
+            text-align: center;
+        }
+
+        /* 圆点 */
+
+        .banner ol {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 13px;
+            background-color: rgba(255,255,255,0.3);
+            display: flex;
+            border-radius: 10px;
+        }
+
+        .banner ol li {
+            margin: 3px;
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .banner ol .active {
+            background-color: #ff5000;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <!-- 图 -->
+        <ul>
+            <li><a href="#"><img src="../../2_images/banner1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="../../2_images/banner2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="../../2_images/banner3.jpg" alt=""></a></li>
+        </ul>
+        <!-- 箭头 -->
+        <a href="#" class="prev">
+            <i class="iconfont icon-icon-test4"></i>
+        </a>
+        <a href="#" class="next">
+            <i class="iconfont icon-icon-test5"></i>
+        </a>
+        <!-- 圆点 -->
+        <ol>
+            <li></li>
+            <li class="active"></li>
+            <li></li>
+        </ol>
+    </div>
+</body>
+</html>
