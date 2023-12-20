@@ -7,7 +7,7 @@
 
 /* 设置网页统一的字体大小、行高、字体系列相关属性 */
 body {
-  font: 16px/1.5  "Microsoft Yahei",
+  font: 16px/1.5  "PingFangSC-Regular","Microsoft Yahei",
     "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
   color: #333;
 }
