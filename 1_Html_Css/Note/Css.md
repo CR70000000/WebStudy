@@ -215,3 +215,6 @@
  - `text` 工字型，提示用户可以选择文字
  - `move` 十字光标，提示用户可以移动
  ![光标类型](../2_images/光标类型.png)
+
+ ### Favicon 图标
+  ![Favicon 图标](../2_images/Favicon%20图标.png)
