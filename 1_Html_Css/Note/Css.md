@@ -201,10 +201,6 @@
    1. `display: block;`
    2. 用`vertical-align`
 
-### 过渡 `transition`
- - 属性值：过渡的属性 花费时间（s）
- ![过渡](../2_images/过渡.png)
-
 ### 透明度 `opacity`
  - 属性值：0-1 ; 设置整个元素的透明度（包含背景和内容）
  ![透明度](../2_images/透明度.png)
@@ -218,3 +214,32 @@
 
  ### Favicon 图标
   ![Favicon 图标](../2_images/Favicon%20图标.png)
+
+### 过渡 `transition`
+ - 属性值：过渡的属性 花费时间（s）
+ ![过渡](../2_images/过渡.png)
+
+### 平面转换 `transform`
+ - 平移 `transform: translate(X轴移动距离,Y轴移动距离)`
+ - 旋转 `transform: rotate(旋转角度deg)`
+ - 改变转换原点 `transform-origin: 水平原点位置 垂直原点位置`
+   - 属性值：left,right,top,bottom,center/像素单位数值/百分比
+ - 多重转换（先平移后旋转）`transform: translate(X轴移动距离,Y轴移动距离) rotate(旋转角度deg)`
+ - 缩放 `transform: scale(缩放倍数)`/`transform: scale(X轴缩放倍数，Y轴缩放倍数)`
+ - 平移实现居中效果
+   - 方法1
+     ```css
+     position:absolute;
+     left:50%;
+     top:50%;
+     /* margin */
+     margin-left:宽的一半;
+     margin-top:高的一半;
+     ```
+   - 方法2
+     ```css
+     position:absolute;
+     left:50%;
+     top:50%;
+     transform:translate(-50%,-50%);
+     ```
