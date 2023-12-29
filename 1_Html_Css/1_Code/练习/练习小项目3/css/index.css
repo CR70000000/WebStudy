@@ -1,0 +1,101 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+body,
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, PingFangSC-Regular, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+img {
+  vertical-align: bottom;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.46153846rem;
+  height: 1.35384615rem;
+  line-height: 1.35384615rem;
+}
+header .icon-left {
+  font-size: 0.67692308rem;
+}
+header h3 {
+  font-size: 0.52307692rem;
+}
+header .note {
+  font-size: 0.46153846rem;
+  color: #2CB5A5;
+}
+.banner {
+  text-align: center;
+  margin-top: 0.92307692rem;
+  margin-bottom: 1.04615385rem;
+}
+.banner img {
+  margin-bottom: 0.55384615rem;
+  width: 7.38461538rem;
+  height: 6.33846154rem;
+}
+.banner p {
+  font-size: 0.49230769rem;
+}
+.banner p span {
+  color: #16C2A3;
+}
+.type {
+  padding: 0.46153846rem;
+}
+.type li {
+  margin-bottom: 0.46153846rem;
+  padding: 0 0.46153846rem;
+  height: 2.4rem;
+  border: 1px solid #EDEDED;
+  border-radius: 0.12307692rem;
+}
+.type li a {
+  display: flex;
+  align-items: center;
+  height: 2.4rem;
+}
+.type li a img {
+  margin-right: 0.43076923rem;
+  width: 1.23076923rem;
+  height: 1.23076923rem;
+}
+.type li a .txt {
+  flex: 1;
+}
+.type li a .txt h4 {
+  font-size: 0.49230769rem;
+  color: #3C3E42;
+  line-height: 0.73846154rem;
+}
+.type li a .txt p {
+  font-size: 0.4rem;
+  color: #848484;
+}
+.type li a .icon-right {
+  font-size: 0.49230769rem;
+}

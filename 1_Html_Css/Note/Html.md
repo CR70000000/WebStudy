@@ -1,3 +1,6 @@
+### VSCode Wmmet写法
+ ![HTML简写](../2_images/HTML.png)
+ 
 ### 按钮标签
  ![按钮标签](../2_images/按钮.png)
 
