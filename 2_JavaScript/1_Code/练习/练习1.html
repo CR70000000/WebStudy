@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h2 {
+      text-align: center;
+    }
+
+    table {
+      /* 合并黑边框 */
+      border-collapse: collapse;
+
+      margin: 0 auto;
+      height: 100px;
+      text-align: center;
+    }
+
+    th {
+      padding: 0 20px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>订单</h2>
+  <script>
+    // +进行隐式转换，放在前面可以直接转换为Number类型
+    let p = +prompt('价格')
+    let n = +prompt('数量')
+    let a = prompt('地址')
+    let total = p * n
+    document.write(`
+    <table>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>${p}</td>
+      <td>${n}</td>
+      <td>${total}</td>
+      <td>${a}</td>
+    </tr>
+  </table>
+    `)
+  </script>
+</body>
+
+</html>

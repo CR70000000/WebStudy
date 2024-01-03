@@ -1,6 +1,6 @@
 ### 选择器优先级
  - 通配符 < 标签 < 类 < id < 行内 < !important
- ![选择器优先级计算规则](../2_images/选择器优先级计算规则.png)
+ ![选择器优先级计算规则](../1_Html_Css/2_images/选择器优先级计算规则.png)
  
 ### 复合选择器
  - 后代选择器
@@ -27,11 +27,11 @@
    - `E:last-child`   查找最后一个E元素
    - `E:nth-child(N)` 查找第N个E元素（第一个元素N值为1）
    - `E:nth-child(公式)` 
-   ![公式](../2_images/Nth公式.png)
+   ![公式](../1_Html_Css/2_images/Nth公式.png)
  - 伪元素选择器
    - `E::before` 在E元素里面最`前面`添加一个伪元素 
    - `E::after`  在E元素里面最`后面`添加一个伪元素
-   ![伪元素选择器](../2_images/伪元素选择器.png)
+   ![伪元素选择器](../1_Html_Css/2_images/伪元素选择器.png)
 
 ### 背景属性
  - 背景色 `background-color`
@@ -76,7 +76,7 @@
  - `inline`       行内
 
 ### 盒子模型
-![盒子模型-组成](../2_images/盒子模型.png)
+![盒子模型-组成](../1_Html_Css/2_images/盒子模型.png)
  - 盒子模型被border和padding撑大解决方法
    1. 手动计算，减去border/padding的尺寸
    2. 内减模式:`box-sizing:border-box`
@@ -143,22 +143,22 @@
    4. 父级元素添加CSS属性 `overflow:hidden`
 
 ### Flex布局 `display:flex;`
- ![Flex-组成](../2_images/Flex-组成.png)
- ![Flex布局属性](../2_images/Flex布局属性.png)
+ ![Flex-组成](../1_Html_Css/2_images/Flex-组成.png)
+ ![Flex布局属性](../1_Html_Css/2_images/Flex布局属性.png)
  - 创建Flex容器 `display:flex`
  - 主轴对齐方式 `justify-content`
-   ![主轴对齐方式](../2_images/Flex主轴对齐方式.png)
+   ![主轴对齐方式](../1_Html_Css/2_images/Flex主轴对齐方式.png)
  - 侧轴对齐方式 `align-items`
  - 某个弹性盒子侧轴对齐方式 `align-self`
-   ![侧轴对齐方式](../2_images/侧轴对齐方式.png)
+   ![侧轴对齐方式](../1_Html_Css/2_images/侧轴对齐方式.png)
  - 修改主轴方向 `flex-direction`
-   ![修改主轴方向](../2_images/修改主轴方向.png)
+   ![修改主轴方向](../1_Html_Css/2_images/修改主轴方向.png)
  - 弹性伸缩比 `flex`
-   ![弹性伸缩比](../2_images/弹性伸缩比.png)
+   ![弹性伸缩比](../1_Html_Css/2_images/弹性伸缩比.png)
  - 弹性盒子换行 `flex-wrap`
-   ![弹性盒子换行](../2_images/弹性盒子换行.png)
+   ![弹性盒子换行](../1_Html_Css/2_images/弹性盒子换行.png)
  - 行对齐方式 `align-content`
-   ![行对齐方式](../2_images/行对齐方式.png)
+   ![行对齐方式](../1_Html_Css/2_images/行对齐方式.png)
 
 ### 定位 `position`
  - 子级绝对定位，父级相对定位（子绝父相）
@@ -181,15 +181,15 @@
    2. 水平、垂直边偏移量为50% `left:50%;top:50%;`
    3. 子级向左、上移动自己尺寸的一半 `transform:translate(-50%,-50%);`
 
-  ![定位](../2_images/定位.png)
+  ![定位](../1_Html_Css/2_images/定位.png)
 
 ### 字体图标
  - iconfont 图标库: <https://www.iconfont.cn/>
-   ![字体图标-使用字体](../2_images/字体图标使用步骤.png)
+   ![字体图标-使用字体](../1_Html_Css/2_images/字体图标使用步骤.png)
  - 上传矢量图
 
 ### 垂直对齐方式 `vertical-align`
- ![垂直对齐方式](../2_images/垂直对齐方式.png)
+ ![垂直对齐方式](../1_Html_Css/2_images/垂直对齐方式.png)
  - `baseline` 基线对齐
  - `top` 顶部对齐
  - `middle` 居中对齐
@@ -203,21 +203,21 @@
 
 ### 透明度 `opacity`
  - 属性值：0-1 ; 设置整个元素的透明度（包含背景和内容）
- ![透明度](../2_images/透明度.png)
+ ![透明度](../1_Html_Css/2_images/透明度.png)
 
 ### 光标类型 `cursor`
  - `default` 默认，通常是箭头
  - `pointer` 小手效果，提示用户可以点击
  - `text` 工字型，提示用户可以选择文字
  - `move` 十字光标，提示用户可以移动
- ![光标类型](../2_images/光标类型.png)
+ ![光标类型](../1_Html_Css/2_images/光标类型.png)
 
  ### Favicon 图标
-  ![Favicon 图标](../2_images/Favicon%20图标.png)
+  ![Favicon 图标](../1_Html_Css/2_images/Favicon%20图标.png)
 
 ### 过渡 `transition`
  - 属性值：过渡的属性 花费时间（s）
- ![过渡](../2_images/过渡.png)
+ ![过渡](../1_Html_Css/2_images/过渡.png)
 
 ### 平面转换 `transform`
  - 平移 `transform: translate(X轴移动距离,Y轴移动距离)`
@@ -283,8 +283,8 @@
 
  ### 动画 `animation`
   -  `animation: 动画名称 动画时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态`
-    ![动画](../2_images/动画.png)
-    ![动画属性](../2_images/动画属性.png)
+    ![动画](../1_Html_Css/2_images/动画.png)
+    ![动画属性](../1_Html_Css/2_images/动画属性.png)
   - 速度曲线
     1. `linear` 匀速动画
     2. `steps()` 逐帧动画
@@ -303,16 +303,16 @@
     1. `running` 默认，动画正在播放
     2. `paused` 动画暂停播放
     3. `alternate` 正常和倒序交替播放
-    ![动画拆分属性](../2_images/动画拆分属性.png)
+    ![动画拆分属性](../1_Html_Css/2_images/动画拆分属性.png)
 
   #### 逐帧动画 `steps`
    - 步骤
-     ![](../2_images/逐帧动画.png)
+     ![](../1_Html_Css/2_images/逐帧动画.png)
    - 实例
-     ![steps动画实例](../2_images/steps动画实例.png)
+     ![steps动画实例](../1_Html_Css/2_images/steps动画实例.png)
   #### 多组动画
    - 多组动画
-     ![多组动画](../2_images/多组动画.png)
+     ![多组动画](../1_Html_Css/2_images/多组动画.png)
 
  ### 移动端适配 `rem` `vw`
   #### rem
@@ -324,13 +324,13 @@
      1. 给HTML标签加字号 `font-size: xxpx;`
      2. 使用rem单位书写尺寸
   #### 媒体查询
-   ![媒体查询](../2_images/媒体查询.png)
+   ![媒体查询](../1_Html_Css/2_images/媒体查询.png)
   #### rem适配
    - 步骤
      1. 使用媒体查询，给不同的视口的屏幕设置不同的HTML字号
      2. 使用rem单位书写尺寸
 
-     ![rem适配](../2_images/rem适配.png)
+     ![rem适配](../1_Html_Css/2_images/rem适配.png)
   #### rem-flexible.js
    - flexible.js是手淘开发出的一个用来适配移动端的js库。
    - 核心原理就是根据不同的视口宽度给网页中html根节点设置不同的font-size。
@@ -341,7 +341,7 @@
    - 变量
      1. 定义变量： `@变量名:数据;`
      2. 使用变量： `CSS属性:@变量名;`
-     ![less变量的定义和使用](../2_images/less变量的定义和使用.png)
+     ![less变量的定义和使用](../1_Html_Css/2_images/less变量的定义和使用.png)
    - 导入（在less中导入less）
      - 作用：导入less公共样式文件
      - 语法：导入: `@import "文件路径";`
@@ -362,9 +362,9 @@
    - @media 关键词 媒体类型 and (媒体特性) { CSS代码 }
      1. 关键词 and/only/not
      2. 媒体类型
-        ![媒体查询-媒体类型](../2_images/媒体查询-媒体类型.png)
+        ![媒体查询-媒体类型](../1_Html_Css/2_images/媒体查询-媒体类型.png)
      3. 媒体特性
-        ![媒体查询-媒体特性](../2_images/媒体查询-媒体特性.png)
+        ![媒体查询-媒体特性](../1_Html_Css/2_images/媒体查询-媒体特性.png)
    - 简略写法
      - 媒体特性
        1. max-width >=最大宽度
@@ -376,14 +376,14 @@
         }
      }
      ```
-     ![媒体查询](../2_images/媒体查询.png)
+     ![媒体查询](../1_Html_Css/2_images/媒体查询.png)
    - 外部CSS写法
-     ![媒体查询-外部CSS](../2_images/媒体查询-外部CSS.png)
+     ![媒体查询-外部CSS](../1_Html_Css/2_images/媒体查询-外部CSS.png)
   #### Bootstrap
    - 引入
    - 调用类名 例 响应式版心： container
-     ![Bootstrap-使用](../2_images/Bootstrap-使用.png)
+     ![Bootstrap-使用](../1_Html_Css/2_images/Bootstrap-使用.png)
    ##### 栅格系统
-  ![栅格系统](../2_images/栅格系统.png)
-  ![栅格系统实例代码](../2_images/栅格系统实例代码.png)
+  ![栅格系统](../1_Html_Css/2_images/栅格系统.png)
+  ![栅格系统实例代码](../1_Html_Css/2_images/栅格系统实例代码.png)
   
