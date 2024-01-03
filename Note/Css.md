@@ -383,3 +383,7 @@
    - 引入
    - 调用类名 例 响应式版心： container
      ![Bootstrap-使用](../2_images/Bootstrap-使用.png)
+   ##### 栅格系统
+  ![栅格系统](../2_images/栅格系统.png)
+  ![栅格系统实例代码](../2_images/栅格系统实例代码.png)
+  
