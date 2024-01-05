@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>循环</title>
+</head>
+
+<body>
+  <script>
+    let money = 10;
+    let num;
+
+    while (true) {
+      num = +prompt('输入数字:1存钱,2取钱,3查看,4退出');
+
+      switch (num) {
+        case 1:
+          let m = +prompt('输入存储的金额：');
+          money += m;
+          console.log(`余额${money}`);
+          break;
+        case 2:
+          let q = +prompt('输入取出的金额：');
+          if (q > money) {
+            console.log('余额不足！');
+          } else {
+            money -= q;
+            console.log(`余额${money}`);
+          }
+          break;
+        case 3:
+          console.log(`余额${money}`);
+          break;
+        case 4:
+          console.log('退出程序');
+          break;
+        default:
+          console.log('无效的选项');
+          break;
+      }
+
+      if (num === 4) {
+        break; // 退出循环
+      }
+    }
+    // 输出1-100
+    for (let i = 1; i <= 100; i++) {
+      document.write(`${i}个`)
+    }
+    document.write('<br>');
+    // 输出1-100偶数和
+    let s = 0
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 === 0) {
+        s = s + i
+      }
+    }
+    console.log(s);
+    // 打印数组
+    let arr = [1, 2, 3, 4, 5]
+    for (let i = 0; i <= 5; i++) {
+      console.log(arr[i])
+    }
+
+    // 打印直角三角形
+    let l = +prompt('行');
+    // 外层行
+    for (let i = 0; i < l; i++) {
+      // 内层列
+      for (let j = 0; j <= i; j++) {
+        document.write('X');
+      }
+      document.write('<br>');
+    }
+
+  </script>
+</body>
+
+</html>

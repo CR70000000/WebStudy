@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 数组最大值
+    let arr = [2, 56, 76, 32, 3, 0]
+    // max先存储第一个值，然后和后面比对，大就替换，小的就跳过
+    let max = arr[0]
+    for (let i = 0; i < arr.length; i++) {
+      // if (max < arr[i]) {
+      //   max = arr[i]
+      // }
+      max < arr[i] ? max = arr[i] : max
+    }
+    console.log(max);
+
+    // 数组的筛选
+    let arr1 = [2, 4, 5, 12, 4, 0, 34, 33, 10, 11, 23]
+    // 声明新的空数组，用于存储数据
+    let newArr = []
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr[i] >= 10) {
+        // 满足条件的增加给新数组
+        newArr.push(arr[i])
+      }
+    }
+    // 输出筛选后的数组
+    console.log(newArr);
+  </script>
+</body>
+
+</html>

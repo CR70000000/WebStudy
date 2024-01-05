@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冒泡排序</title>
+</head>
+<body>
+  <script>
+    // n个数据需要走n-1次也是数组的长度 arr.length-1
+    // 每次交换的次数：数组的长度 - 次数 arr.length - 1 - i
+    let arr = [2,354,13,22,1,90]
+    for (let i = 0; i < arr.length - 1; i++) {
+      for (let j = 0; j < arr.length - 1 - i; j++) {
+        // 交换条件：第一个大于第二个数
+        if (arr[j] > arr[j + 1]) {
+          // 交换变量
+          let temp = arr[i]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = temp
+        }
+      }
+    }
+    console.log(arr)
+  </script>
+</body>
+</html>

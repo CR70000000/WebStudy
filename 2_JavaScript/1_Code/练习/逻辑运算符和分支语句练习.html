@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>逻辑运算符和语句练习</title>
+</head>
+
+<body>
+  <script>
+    let value = +prompt('输入一个数字：')
+    // 单分支
+    if (value > 0) {
+      console.log(`${value}是正数`)
+    }
+    // 双分支
+    // let year = +prompt('输入年份')
+    if (value % 4 === 0 && value % 100 !== 0 || value % 400 === 0) {
+      console.log(`${value}是闰年！`)
+    } else {
+      console.log(`${value}不是闰年！`)
+    }
+    // 多分支
+    if (value > 90) {
+      console.log(`${value}大于90`);
+    } else if (value < 90 && value > 70) {
+      console.log(`${value}小于90,大于70`)
+    } else if (value < 70) {
+      console.log(`${value}小于70`)
+    }
+    switch (3) {
+      case 1:
+        console.log(1)
+        break
+      case 2:
+        console.log(2)
+        break
+      case 3:
+        console.log(3)
+        break
+      default:
+        console.log('没有！');
+        break
+    }
+  </script>
+</body>
+
+</html>
