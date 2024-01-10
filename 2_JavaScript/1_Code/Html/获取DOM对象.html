@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>A</div>
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div id="box1"></div>
+  <div id="box1"></div>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+    // 获取匹配第一个元素
+    const div = document.querySelector('div')
+    const div1 = document.querySelector('.box')
+    const div2 = document.querySelector('#box1')
+    const li = document.querySelector('ul li:first-child')
+    // 获取匹配所有元素
+    const allDiv = document.querySelectorAll('div')
+  </script>
+</body>
+
+</html>

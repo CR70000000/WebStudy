@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>转换时分秒</title>
+</head>
+
+<body>
+  <script>
+    let n = +prompt('请输入总秒数：')
+    function time(num) {
+      let h = parseInt(num / 60 / 60 % 24)
+      let m = parseInt(num / 60 % 24)
+      let s = parseInt(num % 60)
+      h = h >= 10 ? h : '0' + h
+      m = m >= 10 ? m : '0' + m
+      s = s >= 10 ? s : '0' + s
+      return [h, m, s]
+    }
+    let arr = time(n)
+    document.write(`总秒数：${n}秒 <br> ${arr[0]}时 ${arr[1]}分 ${arr[2]}秒`)
+  </script>
+</body>
+
+</html>

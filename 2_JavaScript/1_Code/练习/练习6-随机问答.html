@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>随机问答</title>
+  <style>
+    .box {
+      border: 2px solid #000;
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin-left: 10px;
+      text-align: left;
+    }
+
+    button {
+      padding: 5px 20px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>随机抽取</h2>
+    <h3>题目：</h3>
+    <button class="start">开始</button>
+    <button class="end">结束</button>
+  </div>
+  <script>
+    const arr = [
+      '1+1=?',
+      '2+2=?',
+      '3+3=?',
+      '4+4=?',
+      '5+5=?']
+    let timeId = 0
+    let index = 0
+    const h3 = document.querySelector('h3')
+    const startBtn = document.querySelector('.start')
+    const endBtn = document.querySelector('.end')
+    startBtn.addEventListener('click', function
+      () {
+      // 设置一个定时器，每隔100毫秒执行一次
+      timeId = setInterval(function
+        () {
+        // 随机生成一个0-arr.length的整数
+        index = Math.floor(Math.random() * arr.length)
+        // 将arr[index]的值赋值给h3
+        h3.innerText = `题目：${arr[index]}`
+      }, 100)
+    })
+    endBtn.addEventListener('click', function
+      () {
+      // 清除定时器
+      clearInterval(timeId)
+      // 从arr中删除index位置的元素
+      arr.splice(index, 1)
+
+      // 如果index等于0，表示已经抽取完所有元素
+      if (index === 0) {
+        h3.innerHTML = '抽取完了！'
+        startBtn.disabled = true
+        endBtn.disabled = true
+      }
+    })
+  </script>
+</body>
+
+</html>

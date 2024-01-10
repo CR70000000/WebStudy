@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: relative;
+      margin: 30px auto;
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      text-align: center;
+      line-height: 200px;
+    }
+
+    .boxIn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 20px;
+      width: 20px;
+      background-color: blue;
+      text-align: center;
+      line-height: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>点击</button>
+
+  <div class="box">
+    A
+    <div class="boxIn">X</div>
+  </div>
+  <script>
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', function () {
+      console.log('点击了按钮')
+    })
+
+    const boxIn = document.querySelector('.boxIn')
+    const box = document.querySelector('.box')
+    boxIn.addEventListener('click', function () {
+      box.style.display = 'none'
+      boxIn.style.display = 'none'
+    })
+  </script>
+</body>
+
+</html>
