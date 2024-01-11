@@ -36,25 +36,23 @@
     A
     <div class="boxIn">X</div>
   </div>
+
+  <div class="box">
+    A
+    <div class="boxIn">X</div>
+  </div>
+
+  <div class="box">
+    A
+    <div class="boxIn">X</div>
+  </div>
   <script>
-    const btn = document.querySelector('button')
-    btn.addEventListener('click', function () {
-      console.log('点击了按钮')
-    })
-
-    // 事件监听实现
-    // const boxIn = document.querySelector('.boxIn')
-    // const box = document.querySelector('.box')
-    // boxIn.addEventListener('click', function () {
-    //   box.style.display = 'none'
-    //   boxIn.style.display = 'none'
-    // })
-
-    // 父子节点实现（parentNode）
-    const boxIn = document.querySelector('.boxIn')
-    boxIn.addEventListener('click', function () {
-      this.parentNode.style.display = 'none'
-    })
+    const closeBtn = document.querySelectorAll('.boxIn')
+    for (let i = 0; i < closeBtn.length; i++) {
+      closeBtn[i].addEventListener('click', function () {
+        closeBtn[i].parentNode.style.display = 'none'
+      })
+    }
   </script>
 </body>
 
