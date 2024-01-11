@@ -122,7 +122,7 @@
         let fn = function () {}
         // 具名函数
         function fn () {}
-    ```
+        ```
   - 立即执行函数：避免全局变量的污染
     ```js
     // 多个立即执行函数需要用`;`隔开
@@ -264,149 +264,48 @@
       - `unload` 页面关闭
       - `resize` 窗口大小改变
       - `scroll` 滚动条滚动
-  - 事件对象
-    - 事件对象是事件发生时，系统自动创建的一个对象，包含了事件相关的信息
-    - 在事件绑定的函数中，默认有一个事件对象`event/e/ev`
-       ```js
-       // 获取事件对象
-       元素.addEventListener('事件名',function(event){
-           console.log(event)
-       })
-       ```
-    - 事件对象中的常用属性
-       - `event.target` 返回触发事件的元素
-       - `event.type` 返回事件类型
-       - `event.clientX` 返回鼠标指针的水平坐标（相当于浏览器可视窗口）
-       - `event.clientY` 返回鼠标指针的垂直坐标（相当于浏览器可视窗口）
-       - `event.key` 返回键盘键的字符
-       - `event.offsetX` 返回鼠标指针的水平坐标（相当于事件源元素）
-       - `event.offsetY` 返回鼠标指针的垂直坐标（相当于事件源元素）
-  - 环境对象
-    - 环境对象是事件发生时，系统自动创建的一个对象，包含了事件相关的信息
-    - 在事件绑定的函数中，默认有一个环境对象`this`
-       ```js
-       // 获取环境对象
-       元素.addEventListener('事件名',function(event){
-           console.log(this)
-       })
-       ```
-  - 回调函数
-    - 函数A作为参数传递给函数B时，我们称函数A为回调函数
-    - 回调函数是事件发生时，系统自动调用的函数
-    - 回调函数的参数
-       - `event` 事件对象
-       - `this` 环境对象
-    - 回调函数的返回值
-       - 返回值会作为事件处理函数的返回值
-  - 事件流
-    - 事件流描述的是从页面中接收事件的顺序
-    - 事件流分为三个阶段
-       - 事件捕获阶段
-         - 从`document`开始，依次向下传播到目标元素
-       - 处于目标阶段
-         - 事件到达目标元素，触发目标元素的响应函数
-       - 事件冒泡阶段
-         - 从目标元素开始，依次向上传播到`document`
-    - 阻止冒泡和捕获
-       - `事件对象[event/e/ev].stopPropagation()` 阻止冒泡
-    - 事件解绑
-       - L0事件解绑
-         - `元素.onclick = null`
-       - L2事件解绑
-         - `元素.removeEventListener('事件名',回调函数)`
-  - 事件委托
-    - 事件委托的原理
-       - 不是每个子节点单独设置事件监听器，而是事件监听器`设置在其父节点`上，然后利用冒泡原理影响设置每个子节点
-    - 事件委托的优点
-       - 省去了为每个子节点添加事件监听器的工作
-       - `事件对象[event/e/ev].target`来获取触发事件的全部子节点对象
-       - `事件对象[event/e/ev].target.tagName`来获取触发事件的对应的子节点对象
-  - 阻止默认行为
-    - `event对象[event/e/ev].preventDefault()`
-    - `return false`
-  - 其他事件
-    1. 页面加载事件
-      - `DOMContentLoaded` 页面加载完成，不包括样式表、图片、flash等（给document添加）
-      - `load` 页面加载完成，包括样式表、图片、flash等（给window添加）
-    2. 元素滚动事件
-      - `scroll` 元素滚动条滚动
-        - 监听整个页面滚动
-          - 获取Html元素写法 `document.documentElement`
-          ```js
-          window.addEventListener('scroll',function(){
-              console.log('滚动了')
-          })
-          ```
-        - 监听某个元素滚动
-          - `scrollLeft` 元素水平滚动条的位置
-          - `scrollTop` 元素垂直滚动条的位置
-          ```js
-          元素.addEventListener('scroll',function(){
-              console.log('滚动了')
-          })
-          ```
-    3. 页面尺寸事件
-      - `resize` 窗口大小改变
+    - 事件对象
+      - 事件对象是事件发生时，系统自动创建的一个对象，包含了事件相关的信息
+      - 在事件绑定的函数中，默认有一个事件对象`event/e/ev`
         ```js
-        // 监听整个页面尺寸改变
-        window.addEventListener('resize',function(){
-            console.log('窗口大小改变了')
-        })
-        // 监听某个元素尺寸改变
-        元素.addEventListener('resize',function(){
-            console.log('窗口大小改变了')
+        // 获取事件对象
+        元素.addEventListener('事件名',function(event){
+            console.log(event)
         })
         ```
-      - 获取元素宽高（不包含边框、margin、滚动条等）
-        - `clientWidth` 元素可视区的宽度
-        - `clientHeight` 元素可视区的高度 
-      - 获取元素宽高（包含边框、margin、滚动条等）
-        - `offsetWidth` 元素可视区的宽度
-        - `offsetHeight` 元素可视区的高度
-  - 元素尺寸与位置
-    1. 获取元素宽高（包含边框、margin、滚动条等）
-       - `offsetWidth` 元素可视区的宽度
-       - `offsetHeight` 元素可视区的高度
-    2. 获取元素位置
-       - `offsetLeft` 元素相对于其定位父元素的水平偏移量
-       - `offsetTop` 元素相对于其定位
-       - `element.getBoundingClientRect()` 返回元素的大小及其相对于视口的位置
-    ![页面滚顶总结](../2_JavaScript/2_images/页面滚顶总结.png)
-  #### 日期对象
-  - 实例化（new）
-    - `const date = new Date()`获取当前时间
-    - `const date = new Date('2020-11-25 12:0:0')`获取指定时间
-  - 日期对象的方法
-    - `getFullYear()` 获取当前日期的年份
-    - `getMonth()` 获取当前日期的月份（0-11）
-    - `getDate()` 获取当前日期的天数（1-31）
-    - `getDay()` 获取当前日期的星期几（0-6）
-    - `getHours()` 获取当前日期的时
-    - `getMinutes()` 获取当前日期的分
-    - `getSeconds()` 获取当前日期的秒
-    - `getMilliseconds()` 获取当前日期的毫秒
-    - `toLocalString()` 获取当前日期的本地字符串表示
-    - `toLocaleDateString()` 获取当前日期的本地日期字符串表示
-    - `toLocaleTimeString()` 获取当前日期的本地时间字符串表示
-  - 时间戳
-    - 解释：时间戳是指从1970年1月1日00:00:00 UTC到当前时间所经过的毫秒数
-    - 方法1 `getTime()`
-      ```js
-      const date = new Date()
-      // 当前时间戳
-      const timestemp =  date.getTime()
-      // 指定时间戳
-      const timestemp =  new Date('2020-11-25 12:0:0').getTime()
-      ```
-    - 方法2 `Date.now()`
-      ```js
-      // 当前时间戳
-      const timestemp = Date.now()
-      ```
-    - 方法3 `+new Date()`
-      ```js
-      // 当前时间戳
-      const timestemp = +new Date()
-      // 指定时间戳
-      const timestemp =  +new Date('2020-11-25 12:0:0')
-      ```
+      - 事件对象中的常用属性
+        - `event.target` 返回触发事件的元素
+        - `event.type` 返回事件类型
+        - `event.clientX` 返回鼠标指针的水平坐标（相当于浏览器可视窗口）
+        - `event.clientY` 返回鼠标指针的垂直坐标（相当于浏览器可视窗口）
+        - `event.key` 返回键盘键的字符
+        - `event.offsetX` 返回鼠标指针的水平坐标（相当于事件源元素）
+        - `event.offsetY` 返回鼠标指针的垂直坐标（相当于事件源元素）
+    - 环境对象
+      - 环境对象是事件发生时，系统自动创建的一个对象，包含了事件相关的信息
+      - 在事件绑定的函数中，默认有一个环境对象`this`
+        ```js
+        // 获取环境对象
+        元素.addEventListener('事件名',function(event){
+            console.log(this)
+        })
+        ```
+    - 回调函数
+      - 函数A作为参数传递给函数B时，我们称函数A为回调函数
+      - 回调函数是事件发生时，系统自动调用的函数
+      - 回调函数的参数
+        - `event` 事件对象
+        - `this` 环境对象
+      - 回调函数的返回值
+        - 返回值会作为事件处理函数的返回值
+    - 事件流
+      - 事件流描述的是从页面中接收事件的顺序
+      - 事件流分为三个阶段
+        - 事件捕获阶段
+          - 从`document`开始，依次向下传播到目标元素
+        - 处于目标阶段
+          - 事件到达目标元素，触发目标元素的响应函数
+        - 事件冒泡阶段
+          - 从目标元素开始，依次向上传播到`document`
+
+        
