@@ -73,11 +73,11 @@
     <div class="tab-nav">
       <h3>每日特价</h3>
       <ul>
-        <li><a class="active" href="javascript:;">精选</a></li>
-        <li><a href="javascript:;">美食</a></li>
-        <li><a href="javascript:;">百货</a></li>
-        <li><a href="javascript:;">个护</a></li>
-        <li><a href="javascript:;">预告</a></li>
+        <li><a class="active" href="javascript:;" data-id="0">精选</a></li>
+        <li><a href="javascript:;" data-id="1">美食</a></li>
+        <li><a href="javascript:;" data-id="2">百货</a></li>
+        <li><a href="javascript:;" data-id="3">个护</a></li>
+        <li><a href="javascript:;" data-id="4">预告</a></li>
       </ul>
     </div>
     <div class="tab-content">
@@ -91,17 +91,30 @@
 
   <script>
     const a = document.querySelectorAll('.tab-nav ul li a')
-    for (let i = 0; i < a.length; i++) {
-      a[i].addEventListener('mouseenter', function
-        () {
+    // 循环的方法实现
+    // for (let i = 0; i < a.length; i++) {
+    //   a[i].addEventListener('mouseenter', function
+    //     () {
+    //     document.querySelector('.tab-nav ul li a.active').classList.remove('active')
+    //     this.classList.add('active')
+    //     document.querySelector('.tab-content .item.active').classList.remove('active')
+    //     document.querySelectorAll('.tab-content .item')[i].classList.add('active')
+    //   }
+    //   )
+    // }
+
+    // 利用事件委托的方法实现
+    const ul = document.querySelector('.tab-nav ul')
+    ul.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() === 'a') {
         document.querySelector('.tab-nav ul li a.active').classList.remove('active')
-        this.classList.add('active')
+        e.target.classList.add('active')
+        // 获取自定义属性
+        const id = e.target.dataset.id
         document.querySelector('.tab-content .item.active').classList.remove('active')
-        document.querySelectorAll('.tab-content .item')[i].classList.add('active')
+        document.querySelectorAll('.tab-content .item')[id].classList.add('active')
       }
-      )
-    }
+    })
   </script>
 </body>
-
 </html>
