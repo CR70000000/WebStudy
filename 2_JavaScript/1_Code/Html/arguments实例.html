@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>arguments实例</title>
+</head>
+
+<body>
+  <script>
+
+    function numSum() {
+      let sum = 0
+      for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i]
+      }
+      console.log(sum)
+    }
+    numSum(1, 2, 3, 4, 5)
+  </script>
+</body>
+
+</html>
