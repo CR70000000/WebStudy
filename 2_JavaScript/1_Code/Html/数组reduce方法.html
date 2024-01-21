@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr = [{
+      name: '张三',
+      salary: 10000
+    }, {
+      name: '李四',
+      salary: 10000
+    }, {
+      name: '王五',
+      salary: 20000
+    },
+    ]
+
+    // 计算所有人的薪资
+    // 初始值必须写，因为这个初始值是一个对象
+    const total = arr.reduce(function (prev, current) {
+      return prev + current.salary
+    }, 0)
+    console.log(total)
+  </script>
+</body>
+
+</html>

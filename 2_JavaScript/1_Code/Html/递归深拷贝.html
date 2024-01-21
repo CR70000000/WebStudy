@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const obj = {
+      uname: 'PYY',
+      age: 18
+    }
+    const o = {}
+    // 拷贝函数
+    function deepCopy(newObj, oldObj) {
+      for (const k in object) {
+        // 判断属性值是不是数组类型
+        if (oldObj[k] instanceof Array) {
+          newObj[k] = []
+          // newObj[k] 接受
+          // oldObj[k] 循环遍历传入 newObj[k]
+          deepCopy(newObj[k], oldObj[k])
+        } else if (oldObj[k] instanceof Object) {
+          newObj[k] = {}
+          deepCopy(newObj[k], oldObj[k])
+        } else {
+          // k属性名 oldObj[k]属性值
+          // 有值的代表值，没有值的代表名
+          newObj[k] = oldObj[k]
+        }
+      }
+    }
+    deepCopy(o, obj)
+
+  </script>
+</body>
+
+</html>

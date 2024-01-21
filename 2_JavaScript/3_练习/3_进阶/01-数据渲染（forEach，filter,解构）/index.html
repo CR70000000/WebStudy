@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>英雄</title>
+  <link rel="stylesheet" href="./css/hero.css" />
+  <link rel="stylesheet" href="./css/comm-v1.css" />
+</head>
+
+<body>
+  <div class="herolist-box">
+    <div class="clearfix herolist-types">
+      <ul class="types-left">
+        <li>综合</li>
+        <li>定位</li>
+      </ul>
+      <ul class="clearfix types-ms">
+        <li data-ptype="10">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>本周免费</label>
+        </li>
+        <li data-ptype="11">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>新手推荐</label>
+        </li>
+      </ul>
+      <ul class="clearfix types-ms">
+        <li class="current" data-type="0">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>全部</label>
+        </li>
+        <li data-type="3">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>坦克</label>
+        </li>
+        <li data-type="1">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>战士</label>
+        </li>
+        <li data-type="4">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>刺客</label>
+        </li>
+        <li data-type="2">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>法师</label>
+        </li>
+        <li data-type="5">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>射手</label>
+        </li>
+        <li data-type="6">
+          <span class="ms-radio"><i class="i"></i></span>
+          <label>辅助</label>
+        </li>
+      </ul>
+    </div>
+    <div class="herolist-content">
+      <ul class="herolist clearfix">
+        <!-- <li >
+          <a href="#" target="_blank"><img src="" width="91" height="91" alt="曜" />曜</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- 数组比较多，放在了外接的js文件中 -->
+  <script src="./hero.js"></script>
+  <script>
+    //     {
+    //     "icon": "./images/105.jpg",
+    //     "name": "廉颇",
+    //     "pay_type": 10,
+    //     "hero_type": 3,
+    // }
+
+    /* 
+    pay_type :  10 本周免费  11 新手推荐
+    hero_type : 3:坦克  1:战士  4:刺客  2:法师   5:射手   6:辅助
+    */
+
+    // // map渲染 render 
+    // function render(arr) {
+    //   const strArr = arr.map(ele => {
+    //     const { icon, name } = ele
+    //     return `
+    //     <li >
+    //       <a href="#" target="_blank"><img src="${icon}" width="91" height="91" alt="${name}" />${name}</a>
+    //     </li> 
+    //     `
+    //   })
+    //   // 渲染
+    //   document.querySelector('.herolist').innerHTML = strArr.join('')
+    // }
+    // render(heroArr)
+
+
+    // 使用forEach遍历数组
+    // 解构数组数据，循环放入预先声明的一个空字符串变量
+    // 让后找到父级元素使用innerHTML渲染页面
+    function render(data) {
+      let str = ''
+
+      data.forEach(item => {
+        // 解构需要的参数
+        const { icon, name, pay_type, hero_type } = item
+        // data-pay-type="${pay_type}" data-hero-type="${hero_type}"
+        str += `
+        <li >
+          <a href="#" target="_blank"><img src="${icon}" width="91" height="91" alt="${name}" />${name}</a>
+        </li>
+        `
+      })
+      // 渲染到页面上
+      document.querySelector('.herolist').innerHTML = str
+      // console.log(str)
+    }
+    render(heroArr)
+    // 数据渲染完毕后，采用循环绑定事件实现（多层结构不宜采用事件委托）
+    const lis = document.querySelectorAll('.types-ms>li')
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].addEventListener('click', function (e) {
+        // 实现点击后选中当前元素，取消选中其他元素效果
+        // 先移除默认也有的,再添加
+        document.querySelector('li.current').classList.remove('current')
+        lis[i].classList.add('current')
+
+        // 可以获取到被点击的元素的自定义属性值
+        console.log(this.dataset.type)
+
+        // 筛选页面
+        // 添加一个判断条件,以免点击全部筛选时无法匹配对应元素
+
+        // 数组方法:filter(function(ele){条件})筛选满足条件的元素,返回一个数组(不改变原数组)
+        if (+this.dataset.type !== 0) {
+          let arr = heroArr.filter(hero => hero.hero_type === +this.dataset.type || hero.pay_type === +this.dataset.ptype)
+          render(arr)
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

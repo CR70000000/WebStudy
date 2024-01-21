@@ -126,6 +126,16 @@
         console.log(item,index)
       })
       ```
+  - fliter方法
+    - 遍历数组，返回符合条件的元素
+      ```js
+      // 假设有一个数组
+      const arr = [1,2,3,4,5]
+      // 假设要找到数组中大于2的元素
+      const arr2 = arr.filter(function(item,index){
+        return item > 2
+      }
+      ```
  ### 函数
   - 函数的声明
     ```js
@@ -746,3 +756,188 @@
         }
         fn({name: 'zs',age: 18,height: 1.88})
         ```
+ ### 深入对象
+  - 创建对象的三种方法
+    1. 利用对象字面量
+       ```js
+       const obj = {
+         name: 'zs'
+       }
+       ```
+    2. 利用new Object()
+       ```js
+       const obj = new Object({
+         name: 'zs'
+       })
+       ```
+    3. 利用构造函数
+       ```js
+       function Person(name,age){
+         this.name = name
+         this.age = age
+       }
+       const obj = new Person('zs',18)
+       ```
+  - 构造函数
+    - 一种特殊的函数，原来初始化对象
+    ```js
+       function Person(name,age){
+         this.name = name
+         this.age = age
+       }
+       const obj = new Person('zs',18)
+    ```
+    - 实例化过程
+      1. 创建新对象
+      2. 构造函数this指向新对象
+      3. 执行构造函数代码，修改this，添加新的属性
+      4. 返回新对象
+  - 实例成员&静态成员
+    - 实例成员：通过构造函数创建的对象称为实例对象，实例对象中的属性和方法称为实例成员（实例属性和实例方法）
+      1. 为构造函数传入参数，创建结构相同但值不同的对象
+      2. 构造函数创建的实例对象彼此独立互不影响
+    - 静态成员：构造函数本身拥有的属性和方法称为静态成员（构造函数属性、构造函数方法）
+      1. 静态成员只能通过构造函数名访问
+      2. 静态方法中的this指向构造函数
+ ### 内置构造函数
+  - Object
+    - `Object.keys`静态方法获取对象所有属性名
+    - `Object.values`静态方法获取对象所有属性值
+    - `Object.assign(目标对象，拷贝对象)`静态方法将一个或多个源对象的所有可枚举属性复制到目标对象
+  - Array
+    - `Array.forEach`遍历数组；不返回任何值
+    - `Array.map`遍历数组；返回一个新数组，不改变原数组
+    - `Array.filter`遍历过滤数组；返回一个符合条件的新数组，不改变原数组
+    - `Array.reduce`遍历累加数组；返回一个最终结果，不改变原数组
+      ```js
+      const arr = [1,2,3,4,5]
+      // 1. 没有初始值
+      const total = arr.reduce(function(prev,current){
+        return prev + current
+      })
+      console.log(total) // 15
+      // 2. 有初始值（数组内加完后，还要加上初始值）
+      const total = arr.reduce(function(prev,current){
+        return prev + current
+      },10)
+      console.log(total) // 25
+      // 箭头函数
+      const total = arr.reduce((prev,current)=>prev + current,10)
+      console.log(total) // 25
+      ```
+    - `Array.join`数组元素拼接成字符串；返回一个字符串，不改变原数组
+    - `Array.find`遍历数组，返回第一个符合条件的元素，没有找到返回undefined；不改变原数组
+    - `Array.every`遍历数组，返回一个布尔值，数组中所有元素都符合条件返回true，否则返回false；不改变原数组
+    - `Array.some`遍历数组，返回一个布尔值，数组中只要有一个元素符合条件返回true，否则返回false；不改变原数组
+    - `Array.sort`数组排序；返回一个排序后的数组，不改变原数组
+    - `Array.split`字符串分割成数组；返回一个分割后的数组，不改变原数组
+    - `Array.from`类数组转换成数组；返回一个转换后的数组，不改变原数组
+  - String
+    - `String.length`获取字符串长度
+    - `String.split('分隔符')`字符串分割成数组；返回一个分割后的数组，不改变原字符串
+    - `String.substring(截取的起始位置, 截取的结束位置)`截取字符串；返回一个截取后的字符串，不改变原字符串
+    - `String.startWith('要判断的字符串')`判断字符串是否以指定字符串开头；返回一个布尔值，是返回true，否返回false，不改变原字符串
+    - `String.includes('要判断的字符串')`判断字符串是否包含指定字符串；返回一个布尔值，是返回true，否返回false，不改变原字符串
+    - `String.toUpperCase()`字符串转换大写；返回一个转换后的字符串，不改变原字符串
+    - `String.toLowerCase()`字符串转换小写；返回一个转换后的字符串，不改变原字符串
+  - Number
+    - `Number.toFixed(保留小数的位数)`保留小数位数；返回一个保留小数位数的字符串，不改变原数字
+ ### 编程思想
+  - 面向过程：是分析问题，找出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候一个一个依次调用就可以了
+  - 面向对象：是把事务分解成对象，然后由对象之间分工与合作
+    - 面向对象的特性
+      - 封装：将属性和方法封装到一个抽象的类中，只暴露一些接口与外部通信
+      - 继承：子类继承父类，子类除了拥有父类的所有属性和方法，还可以拥有自己的属性和方法，继承是允许子类使用父类的属性和方法的
+      - 多态：由继承而产生了相关的不同的类，对同一个方法可以有不同的响应
+ ### 构造函数
+  ```js
+  // 公共的属性写在构造函数里面
+  // 构造函数里面的this指向实例对象
+  function Star(uname,age){
+    this.uname = uname
+    this.age = age
+  }
+  // 公共的方法写在原型上
+  // 原型对象里面的this指向实例对象
+  Star.prototype.sing = function () {
+    console.log('我是公共的方法，写在prototype里面')
+  }
+  Star.prototype.dance = function () {
+    console.log('我是公共的方法，写在prototype里面')
+  }
+  Star.prototype = {
+    // 使用conconstructor重新指回构造函数Star
+    constructor: Star,
+    rap: function() {
+      console.log('我是公共的方法，写在prototype里面')
+    },
+    nba: function() {
+      console.log('我是公共的方法，写在prototype里面')
+    }
+  }
+
+  // 实例对象
+  const Pyy = new Star('彭于晏',35)
+  const Wyz = new Star('吴彦祖',36)
+  ```
+ ### 原型
+  - 原型
+    - 每个函数都有一个prototype属性，这个属性是一个指针，指向一个对象，这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法
+    - 可以把不变的属性和方法放在prototype对象中，这样就可以减少内存消耗，提高访问速度，提高代码复用性，提高代码可维护性，提高代码可扩展性
+  - constructor属性
+    - 该属性指向该原型对象的构造函数
+    - `Star.prototype.constructor === Star` // true 指向Star函数本身
+  - 对象原型
+    - `__proto__`指向该构造函数的原型对象
+    - `__proto__.constructor`指向该构造函数
+  - 原型继承
+    - 子类的原型对象等于父类的实例
+    - 子类的实例的__proto__指向父类的原型对象
+    - 子类的原型对象等于父类的实例，子类的实例的__proto__指向父类的原型对象，这样子类就可以访问到父类原型对象中的属性和方法
+    ```js
+    // 公共的部分放在原型上
+    function Person() {
+      this.eays = 2
+      this.head = 1
+    }
+    // 构造函数1
+    function Fn1() {}
+    // 构造函数1通过原型的方法继承Person
+    Fn1.prototype = new Person()
+    // 指回原来的构造函数
+    Fn1.prototype.constructor = Fn1
+    
+    // 实例1
+    const fn1 = new Fn1()
+
+    // 构造函数2
+    function Fn2() {}
+    // 构造函数2通过原型的方法继承Person
+    Fn2.prototype = new Person()
+    // 指回原来的构造函数
+    Fn2.prototype.constructor = Fn2
+
+    // 实例2
+    const fn2 = new Fn2()
+    ```
+  - 原型链
+    - 基于原型对象的继承使得不同构造函数的原型对象关联在一起，并且这种关联的关系是一种链状的结构，我们将原型对象的链状结构关系称为原型链
+    ![原型链](../2_JavaScript/2_images/原型链.png)
+ ### 深浅拷贝
+  - 浅拷贝
+    - 浅拷贝只是拷贝的地址
+    - 常用方法
+      - 拷贝对象：`Object.assign()` `展开运算符 {...obj}`
+      - 拷贝数组：`Array.prototype.concat()` `展开运算符 [...arr]`
+    - 问题：如果是简单数据类型拷贝值，引用数据类型拷贝的是地址（简单理解：如果是单层对象，没问题，多层对象就有问题）
+  - 深拷贝
+    - 深拷贝拷贝的是对象
+    - 常用方法
+      1. 通过递归实现深拷贝
+        - 如果一个函数在内部调用自己，这个函数就是递归函数
+        - 递归容易出现'栈溢出'，需要加退出条件`return`
+      2. js库`lodash`里面的`cloneDeep`内部实现了深拷贝
+      3. 通过`JSON.parse(JSON.stringify())`实现深拷贝
+ ### 异常处理
+ ### 处理this
+ ### 性能优化
