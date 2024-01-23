@@ -888,7 +888,7 @@
     - 该属性指向该原型对象的构造函数
     - `Star.prototype.constructor === Star` // true 指向Star函数本身
   - 对象原型
-    - `__proto__`指向该构造函数的原型对象
+    - `__proto__`指向该构造函数的原型对象        
     - `__proto__.constructor`指向该构造函数
   - 原型继承
     - 子类的原型对象等于父类的实例
@@ -936,8 +936,105 @@
       1. 通过递归实现深拷贝
         - 如果一个函数在内部调用自己，这个函数就是递归函数
         - 递归容易出现'栈溢出'，需要加退出条件`return`
+        - 实现思路
+          1. 借助于递归函数（自己在函数内部调用自己）
+          2. 如果遇到数组或者对象，则递归
+          3. 拷贝的新对象不会影响旧对象
       2. js库`lodash`里面的`cloneDeep`内部实现了深拷贝
       3. 通过`JSON.parse(JSON.stringify())`实现深拷贝
  ### 异常处理
+  - throw抛异常
+    - 异常处理是指预估代码执行过程中可能发生的错误，然后最大程度避免错误的发生，当错误发生时，能够及时发现并处理错误，保证程序的稳定性和健壮性
+      1. throw抛出异常信息，程序也会终止执行
+      2. throw后面可以跟一个字符串，表示抛出异常的错误信息
+      3. Error对象配合throw抛出异常
+  - try/catch 捕获异常
+    - 我们可以通过try/catch捕获错误信息，try尝试 catch只拦截（可以使用return中断） finally最后执行
+      - try 可能错误的代码写在里面
+      - catch 拦截错误信息，但是不终止（可以使用return中断）
+      - finally 不管有没有错误都执行
+  - debugger
+    - debugger是调试器的调试语句，在代码中添加debugger，可以设置断点，程序会自动在断点处停止执行
  ### 处理this
+  - this指向
+    - 普通函数：谁调用就指向谁，如果没有调用者，this指向window（严格模式下指向undefined）
+    - 箭头函数：函数内部不存在this，this指向外层调用者
+  - 改变指向
+    - `call(thisArg)` 调用函数，指定被调用函数的this指向
+      - thisArg:函数运行时指定的this值
+    - `apply(thisArg,[argsArray])`  调用函数，指定被调用函数的this指向
+      - thisArg:函数运行时指定的this值
+      - argsArray:传递的值，必须包含在数组里面
+    - `bind(thisArg)`  不调用函数，指定被调用函数的this指向；返回一个新的函数
+      - thisArg:函数运行时指定的this值
  ### 性能优化
+  - 防抖debounce：单位时间内，频繁触发事件，只执行最后一次
+    1. 使用lodash库的函数 `__.debounce(func,[wait=0],[options=])`
+      - func:需要防抖的函数
+      - wait:延迟执行的时间
+      - options:配置对象
+        - leading:是否立即执行
+        - trailing:是否延迟执行
+        - maxWait:设置延迟执行的最大值
+    2. 手写防抖函数
+      - 防抖函数核心是利用setTimeout定时器实现
+        1. 声明定时器变量，返回一个函数
+        2. 每次事件触发时，判断是否有定时器，如果有则清除之前的定时器
+        3. 如果没有定时器，则设置新的定时器，存入到定时器变量中
+        4. 定时器内写执行的函数
+      ```js
+      // 函数防抖：函数防抖函数，可以实现函数的延迟执行
+      function debounce(func,wait){
+        // 定义一个timer变量，用于存储定时器
+        let timer = null
+        // 返回一个函数
+        return function(){
+          // 如果timer变量不为空，清除定时器
+          if(timer) clearTimeout(timer)
+          // 重新设置定时器
+          timer = setTimeout(function() {
+            // 调用func函数
+            func()
+          },wait)
+        }
+      }
+      // 使用示例
+      window.onscroll = debounce(function(){console.log('scroll')},1000)
+      ```
+  - 节流throttle：单位时间内，频繁触发事件，只执行一次函数
+    1. 使用lodash库的函数 `__.throttle(func,[wait=0],[options=])`
+       - func:需要节流的函数
+       - wait:延迟执行的时间
+       - options:配置对象
+         - leading:是否立即执行
+         - trailing:是否延迟执行
+         - maxWait:设置延迟执行的最大值
+    2. 手写节流函数
+      - 节流函数核心是利用setTimeout定时器实现
+        1. 声明一个变量，用于存储定时器
+        2. 每次事件触发时，判断是否有定时器，如果有则不开启定时器
+        3. 如果没有定时器，则设置新的定时器，存入到定时器变量中
+          - 定时器内写执行的函数
+          - 定时器内清空定时器变量
+      ```js
+      // 函数节流：函数节流函数，可以实现函数的延迟执行
+      function throttle(func,wait){
+        // 定义一个变量timer，用于存储定时器
+        let timer = null
+        // 返回一个函数
+        return function(){
+          // 如果定时器不存在
+          if(!timer) {
+            // 设置定时器，等待wait毫秒后执行函数func，并将定时器赋值给变量timer
+            timer = setTimeout(function() {
+              // 执行函数func
+              func()
+              // 定时器执行完毕后，清空定时器变量timer
+              timer = null
+            },wait)
+          }
+        }
+      }
+      // 使用示例
+      window.onscroll = throttle(function(){console.log('scroll')},1000)
+      ```
