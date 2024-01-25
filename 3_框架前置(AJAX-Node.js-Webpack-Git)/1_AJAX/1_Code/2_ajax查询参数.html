@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax的使用</title>
+</head>
+
+<body>
+  <p class="my-p"></p>
+  <script src="../../../node_modules/axios/dist/axios.min.js"></script>
+  <script>
+
+    axios({
+      url: 'http://hmajax.itheima.net/api/city',
+      // 查询参数
+      params:{
+        pname:'湖北省'
+      }
+    }).then((res) => {
+
+      console.log(res)
+      console.log(res.data.list)
+      console.log(res.data.list.join('<br>'))
+      // join('') 将数组中的元素以''分割，并且转换为字符串
+      document.querySelector('.my-p').innerHTML = res.data.list.join('-')
+    })
+  </script>
+</body>
+
+</html>

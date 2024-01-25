@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6_接口文档</title>
+</head>
+
+<body>
+  <button class="btn">注册用户</button>
+  <button class="btn-login">登录用户</button>
+  <script src="../../../node_modules/axios/dist/axios.min.js"></script>
+  <script>
+    /*
+      注册用户: http://hmajax.itheima.net/api/register
+      请求方法: POST
+      参数名:
+        username: 用户名 (中英文和数字组成, 最少8位)
+        password: 密码 (最少6位)
+
+      目标: 点击按钮, 通过axios提交用户和密码, 完成注册
+    */
+    document.querySelector('.btn').addEventListener('click', () => {
+      axios({
+        url: 'http://hmajax.itheima.net/api/register',
+        // 指定请求方法
+        method: 'post',
+        data: {
+          username: 'Lizhuo001',
+          password: '7654321'
+        }
+      }).then(result => {
+        console.log(result)
+      }).catch(error => {
+        console.log(error.response.data.message)
+        alert(error.response.data.message)
+      })
+    })
+
+    document.querySelector('.btn-login').addEventListener('click', () => {
+      axios({
+        method: 'post',
+        url: 'http://hmajax.itheima.net/api/login',
+        data: {
+          username: 'Lizhuo001',
+          password: '7654321'
+        }
+      }).then(res => {
+        console.log(res)
+        console.log(res.data.message)
+        document.querySelector('.btn-login').innerHTML = res.data.message
+      })
+    })
+  </script>
+</body>
+
+</html>

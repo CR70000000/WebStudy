@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3_ajax数据提交</title>
+</head>
+
+<body>
+  <script src="../../../node_modules/axios/dist/axios.min.js"></script>
+  <script>
+    // 获取 GET params
+    axios({
+      url: '',
+      method: 'POST',
+      params: {
+        username: '',
+        password: ''
+      }
+    }).then(res => {
+      console.log(res)
+    })
+    // 提交 POST data
+    axios({
+      url: '',
+      method: 'POST',
+      data: {
+        username: '',
+        password: ''
+      }
+    }).then(res => {
+      console.log(res)
+    })
+  </script>
+</body>
+
+</html>
