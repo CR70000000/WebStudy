@@ -45,7 +45,24 @@
 
   <!-- 引入bootstrap.js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+  <script>
+    // 1. 创建弹框对象
+    const modalDom = document.querySelector('.name-box')
+    const modal = new bootstrap.Modal(modalDom)
 
+    // 编辑姓名 -> 点击 -> 弹框显示
+    document.querySelector('.edit-btn').addEventListener('click', () => {
+      document.querySelector('.username').value = '默认姓名'
+      
+      modal.show()
+    })
+    // 保存 -> 点击 -> 弹框隐藏
+    document.querySelector('.save-btn').addEventListener('click', () => {
+      console.log('姓名保存到服务器', username)
+
+      modal.hide()
+    })
+  </script>
 </body>
 
 </html>

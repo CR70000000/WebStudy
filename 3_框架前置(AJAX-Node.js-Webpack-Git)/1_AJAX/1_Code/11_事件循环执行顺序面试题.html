@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件循环经典_经典面试题</title>
+</head>
+
+<body>
+  <script>
+    // 目标：回答代码执行顺序
+    console.log(1)
+    setTimeout(() => {
+      console.log(2)
+      const p = new Promise(resolve => resolve(3))
+      p.then(result => console.log(result))
+    }, 0)
+    const p = new Promise(resolve => {
+      setTimeout(() => {
+        console.log(4)
+      }, 0)
+      resolve(5)
+    })
+    p.then(result => console.log(result))
+    const p2 = new Promise(resolve => resolve(6))
+    p2.then(result => console.log(result))
+    console.log(7)
+    // 代码执行顺序如下：
+    // 首先，console.log(1)会立即被执行，然后进入下一个异步事件循环。
+
+    // 在下一个异步事件循环中，
+    // setTimeout(() => {
+    //   console.log(2)
+    //   const p = new Promise(resolve => resolve(3))
+    //   p.then(result => console.log(result))
+    // },0)
+    // 也会立即执行，然后进入下一个异步事件循环。
+
+    // 异步事件循环中，
+    // setTimeout(() => {
+    //   console.log(4)
+    // }, 0)
+    // 也会立即执行，然后进入下一个异步事件循环。
+
+    // 异步事件循环中，
+    // resolve(5)
+    // 会立即执行，然后进入下一个异步事件循环。
+
+    // 异步事件循环中，
+    // p.then(result =>
+    //   console.log(result)
+    // )
+    // 会立即执行，然后进入下一个异步事件循环。
+
+    // 异步事件循环中，
+    // const p2 = new Promise(resolve =>
+    //   resolve(6))
+    // p2.then(result =>
+    //   console.log(result))
+    // 会立即执行，然后进入下一个异步事件循环
+
+    // 异步事件循环中，console.log(7)会立即执行，然后进入下一个异步事件循环。
+    
+    // 因此，代码执行顺序为：1 -> 2 -> 4 -> 3 -> 5 -> 6 -> 7。
+  </script>
+
+</body>
+
+</html>

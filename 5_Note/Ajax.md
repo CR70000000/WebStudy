@@ -99,10 +99,176 @@
       - true: 获取
       - false: 不获取
 
-### 实际案例
- ### 图书管理
+### XMLHttpRequset
+  #### XMLHttpRequset定义
+  - 定义：AJAX 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。
+  - 关系：axios内部采用XMLHttpRequset与服务器交互
+  - 使用步骤
+    1. 创建XMLHttpRequset对象
+    2. 配置请求方法和请求url地址
+    3. 监听loadend事件，接收响应结果
+    4. 发送请求
+    ```js
+    const xhr = new XMLHttpRequest()
+    xhr.open('请求方法', '请求url网址')
+    xgr.addListener('loadend', () => {
+      // 响应结果
+      console.log(xhr.response)
+    })
+    xhe.send()
+    ```
+  #### XMLHttpRequse-查询参数
+  - 定义：浏览器提供给服务器的额外信息，让服务器返回浏览器想要的数据
+  - 语法：http://xxx.com/xxx/xxx?参数名1=参数值1&参数名2=参数值2
+  #### XMLHttpRequse-数据提交
+  - 请求头设置Xontent-Type: application/json
+  - 请求体携带JSON字符串
+  ```js
+  const xhr = new XMLHttpRequest()
+  xhr.open('请求方法', '请求url网址')
+  xgr.addListener('loadend', () => {
+    // 响应结果
+    console.log(xhr.response)
+  })
+  // 告诉服务器，我们传递的内容类型，是JSON字符串
+  xr.setRequestHeader('Content-Type', 'application/json')
+  // 准备数据转换成JSON字符串
+  const user  = { name: '张三', age: 18}
+  const userStr = JSON.stringify(user)
+  // 发送请求
+  xhe.send(userStr)
+  ```
+
+### Promise
+  #### Promise定义
+  - Promise对象用于表示一个异步操作的最终完（或失败）及其结果值。
+  - 语法
+    ```js
+    // 1. 创建Promise对象
+    const p = new Promise((resolve, reject) => {
+    // 2.执行异步任务-并传递结果
+    // 成功调用：resolve(result) 触发 then() 执行
+    // 失败调用：reject(error) 触发 catch() 执行
+    })
+    // 3. 接收结果
+    p.then(result => {
+    // 成功
+    }).catch(error => {
+    // 失败
+    })
+    ```
+  #### Promise三种状态
+  - 作用：理解Promise对象如何关联的处理函数，以及代码执行顺序
+  - 概论：一个Promise对象，必然处于以下几种状态之一
+    - 待定（pending）：初始状态，既没有被解决也没有被拒绝。
+    - 已完成（fulfilled）：意味着操作成功完成。
+    - 已拒绝（rejected）：意味着操作失败。
+    ![Promise三种状态](../2_JavaScript/2_images/Promise三种状态.png)
+  #### Promise链式调用
+  - 依靠then()方法返回一个新生成的Promise对象，继续串联下一环任务，直到结束
+  - 注意：then()回调函数中的返回值，会影响新生成的Promise对象最终状态和结果
+  - 作用：通过链式调用，解决回调函数嵌套问题
+  #### Promise.all静态方法
+  - 概念：合并多个Promise对象，等待所有同时完成（或某一个失败），做后续逻辑
+  ![Promise.all静态方法](../3_框架前置(AJAX-Node.js-Webpack-Git)/1_AJAX/2_images/Promise.all静态方法.png)
+  - 语法：
+  ```js
+  const p = Promise.all([Promise对象，Promise对象,...])
+  p.then(result => {
+    // result结果：[Promise对象的结果，Promise对象的结果,...]
+  }).catch(error => {
+    // 第一个失败的Promise对象，抛出的异常
+  })
+  ```
+### 同步代码和异步代码
+  #### 同步代码
+  - 我们应该注意的是，实际上浏览器是按照我们书写代码的顺序一行一行地执行程序的。浏览器会等待代码的解析和工作，在上一行完成后才会执行下一行。这样做是很有必要的，因为每一行新的代码都是建立在前面代码的基础之上的。
+  - 这也使得它成为一个同步程序。
+  #### 异步代码
+  - 异步编程技术使你的程序可以在执行一个可能长期运行的任务的同时继续对其他事件做出反应而不必等待任务完成。与此同时，你的程序也将在任务完成后显示结果。
+  #### 总结
+  - 同步代码：逐行执行，需原地等待结果后，才继续向下执行
+  - 异步代码：调用后耗时，不阻塞代码继续执行（不必原地等待），在将来完成后触发一个回调函数。
+
+### 回调函数地狱
+  - 回调函数：将一个函数作为参数传递给另一个函数，并在另一个函数内部调用它。
+  - 回调函数地狱：回调函数嵌套调用，外部回调函数异步执行的结果是嵌套的回调函数的执行条件。
+  - 回调地狱的缺点：
+    - 代码臃肿，可读性差
+    - 代码复用困难
+    - 调试困难
+  - 回调地狱的解决：
+    - 采用Promise对象
+    - 采用async/await语法
+
+### async函数和await
+  - 定义:async函数是使用async关键字声明的函数。async函数是AsyncFunction构造函数的实例，并且其中允许使用await关键字。async和await关键字让我们可以用一种更简洁的方式写出基于Promise的异步行为，而无需刻意地链式调用promise。
+  - 错误捕获
+    - try...catch
+    ```js
+    try{
+      // 要执行的代码
+      // 如果try里某行代码报错后，try中剩余的代码不会执行了
+    } catch (error) {
+      // error接收的是，错误信息
+      // try里代码，如果有错误，直接进入这里执行
+    }
+    ```
+
+### 事件循环
+  - 概念：JavaScript有一个基于事件循环的并发模型，事件循环负责执行代码、收集和处理事件以及执行队列中的子任务。这个模型与其它语言中的模型截然不同，比如C和Java。
+  - 原因：JavaScript单线程（某一刻只能执行一行代码），为了让耗时代码不阻塞其他代码运行，设计了事件循环模型。
+  - 定义：执行代码和收集异步任务的模型，在调用栈空闲，反复调用任务队列里回调函数的执行机制，就叫事件循环
+
+### 宏任务和微任务
+  - ES6之后引入了Promise对象，Promise对象实现了异步操作的链式调用。
+  - 异步任务分为：
+    - 宏任务：由浏览器环境执行的异步代码
+    - 微任务：由JS引擎环境执行的异步代码
+    ![宏任务和微任务](../3_框架前置(AJAX-Node.js-Webpack-Git)/1_AJAX/2_images/宏任务和微任务.png)
+
+## 实际案例
+  ### 图书管理
   #### Bootrstrap弹框
+  - 不离开当前页面，显示单独内容，供用户操作
+  - 属性控制方式
+    1. 引入bootstrap.css和bootstrap.js
+    2. 准备弹框结构，确认结构
+    3. 通过自定义属性，控制弹框的显示和隐藏
+      ```html
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="css选择器"> 
+      <!-- css选择器:结构的类名或者id名 -->
+      ```
+    4. 通过JS控制，弹框的显示和隐藏
+      ```js
+      // 创建弹框对象
+      const modalDom = document.querySelector('css选择器')
+      const modal = new bootstrap.Modal(modalDom)
+      // 显示弹框
+      modal.show()
+      // 隐藏弹框
+      modal.hide()
+      ```
   #### 渲染列表
+  - 封装渲染函数，方便后面使用
+  - 使用axios获取到数据后在then方法中，使用map方法遍历数组，使用join方法将数组转换为字符串，方便写入页面中
   #### 添加图书
+  - 新增图书-表单
+  - 收集数据&提交保存
+    - 收集表单数据，并提交到服务器保存
+    ```js
+    // 获取表单元素对象
+    const addForm = document.querySelector('表单')
+    // 获取表单元素内容
+    const bookObj = serialize(addForm, { hash: true, empty: true })
+    ```
+  - 刷新-图书列表
+    - 一般在axios请求完成后的then方法中执行封装的刷新函数
   #### 删除图书
+  - 绑定点击事件（获取图书id）
+  - 调用删除接口
+  - 刷新-图书列表
   #### 修改图书
+- 编辑图书-表单
+- 表单（数据回显）
+- 修改保存&刷新列表
