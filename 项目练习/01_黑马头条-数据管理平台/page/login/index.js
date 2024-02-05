@@ -21,7 +21,7 @@ document.querySelector('.btn').addEventListener('click', e => {
     console.log(res)
     myAlert(true, '登录成功')
     // 登录成功后，保存 token 令牌字符串到本地，并跳转到内容列表页面
-    localStorage.setItem('token', res.data.data.token)
+    localStorage.setItem('token', res.data.token)
     // 优化体验，显示登录成功，延迟跳转
     setTimeout(() => {
       location.href = '../content/index.html'
