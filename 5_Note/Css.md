@@ -245,145 +245,144 @@
      transform:translate(-50%,-50%);
      ```
 
- ### 渐变 `background-image: linear-gradient` `background-image: radial-gradient`
-  - 线性渐变 `background-image: linear-gradient(to 渐变方向,颜色1 终点位置,颜色2 终点位置,...)`
-    - 颜色（必写）
-    - 渐变方向：to 方位名词/角度度数
-    - 终点位置：百分比
-  - 径向渐变 `background-image: radial-gradient(半径 at 圆心位置,颜色1 终点位置,颜色2 终点位置,...)`
-    - 半径可以是2条，则为椭圆
-    - 圆心位置：像素单位数值/百分比/方位名词
+### 渐变 `background-image: linear-gradient` `background-image: radial-gradient`
+- 线性渐变 `background-image: linear-gradient(to 渐变方向,颜色1 终点位置,颜色2 终点位置,...)`
+  - 颜色（必写）
+  - 渐变方向：to 方位名词/角度度数
+  - 终点位置：百分比
+- 径向渐变 `background-image: radial-gradient(半径 at 圆心位置,颜色1 终点位置,颜色2 终点位置,...)`
+  - 半径可以是2条，则为椭圆
+  - 圆心位置：像素单位数值/百分比/方位名词
 
- ### 空间转换 `transform`
-  - 平移
-    - `transform: translate3d(x, y, z)`
-    - `transform: translateX()`
-    - `transform: translateY()`
-    - `transform: translateZ()`
-  - 视距 `perspective`
-    - `perspective: 视距`
-    - 添加给父级，取值范围800-1200
-  - 旋转
-    - `transform: rotateZ(值)`
-    - `transform: rotateX(值)`
-    - `transform: rotateY(值)`
-    - `transform: rotate3D(x, y, z, 角度度数)`
-  - 立体呈现 `transform-style`
-    - `transform-style: flat` 子级处于平面中
-    - `transform-style: preserve-3d` 子级处于3D空间
-    - 实现步骤
-      1. 父元素添加transform-style: preserve-3d;
-      2. 子级定位
-      3. 调整子盒子的位置（位移或旋转）
-  - 空间缩放 
-    - `transform: scale3D()`
-    - `transform: scaleX()`
-    - `transform: scaleY()`
-    - `transform: scaleZ()`
+### 空间转换 `transform`
+- 平移
+  - `transform: translate3d(x, y, z)`
+  - `transform: translateX()`
+  - `transform: translateY()`
+  - `transform: translateZ()`
+- 视距 `perspective`
+  - `perspective: 视距`
+  - 添加给父级，取值范围800-1200
+- 旋转
+  - `transform: rotateZ(值)`
+  - `transform: rotateX(值)`
+  - `transform: rotateY(值)`
+  - `transform: rotate3D(x, y, z, 角度度数)`
+- 立体呈现 `transform-style`
+  - `transform-style: flat` 子级处于平面中
+  - `transform-style: preserve-3d` 子级处于3D空间
+  - 实现步骤
+    1. 父元素添加transform-style: preserve-3d;
+    2. 子级定位
+    3. 调整子盒子的位置（位移或旋转）
+- 空间缩放 
+  - `transform: scale3D()`
+  - `transform: scaleX()`
+  - `transform: scaleY()`
+  - `transform: scaleZ()`
 
- ### 动画 `animation`
-  -  `animation: 动画名称 动画时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态`
-    ![动画](../1_Html_Css/2_images/动画.png)
-    ![动画属性](../1_Html_Css/2_images/动画属性.png)
-  - 速度曲线
-    1. `linear` 匀速动画
-    2. `steps()` 逐帧动画
-  - 重复次数
-    1. 使用数字
-    2. `infinite` 无限次重复
-  - 播放方向
-    1. `normal` 默认值，正常播放
-    2. `reverse` 倒序播放
-    3. `alternate` 正常和倒序交替播放
-  - 执行完毕时状态
-    1. `none` 默认，动画结束后恢复到初始状态
-    2. `forwards` 动画结束后保持最后一帧的状态
-    3. `backwards` 动画开始前应用第一帧的状态
-  - 播放状态
-    1. `running` 默认，动画正在播放
-    2. `paused` 动画暂停播放
-    3. `alternate` 正常和倒序交替播放
-    ![动画拆分属性](../1_Html_Css/2_images/动画拆分属性.png)
+### 动画 `animation`
+-  `animation: 动画名称 动画时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态`
+  ![动画](../1_Html_Css/2_images/动画.png)
+  ![动画属性](../1_Html_Css/2_images/动画属性.png)
+- 速度曲线
+  1. `linear` 匀速动画
+  2. `steps()` 逐帧动画
+- 重复次数
+  1. 使用数字
+  2. `infinite` 无限次重复
+- 播放方向
+  1. `normal` 默认值，正常播放
+  2. `reverse` 倒序播放
+  3. `alternate` 正常和倒序交替播放
+- 执行完毕时状态
+  1. `none` 默认，动画结束后恢复到初始状态
+  2. `forwards` 动画结束后保持最后一帧的状态
+  3. `backwards` 动画开始前应用第一帧的状态
+- 播放状态
+  1. `running` 默认，动画正在播放
+  2. `paused` 动画暂停播放
+  3. `alternate` 正常和倒序交替播放
+  ![动画拆分属性](../1_Html_Css/2_images/动画拆分属性.png)
 
-  #### 逐帧动画 `steps`
-   - 步骤
-     ![](../1_Html_Css/2_images/逐帧动画.png)
-   - 实例
-     ![steps动画实例](../1_Html_Css/2_images/steps动画实例.png)
-  #### 多组动画
-   - 多组动画
-     ![多组动画](../1_Html_Css/2_images/多组动画.png)
+#### 逐帧动画 `steps`
+  - 步骤
+    ![](../1_Html_Css/2_images/逐帧动画.png)
+  - 实例
+    ![steps动画实例](../1_Html_Css/2_images/steps动画实例.png)
+#### 多组动画
+  - 多组动画
+    ![多组动画](../1_Html_Css/2_images/多组动画.png)
 
- ### 移动端适配 `rem` `vw`
-  #### rem
-   - rem介绍
-     - rem单位，是相对单位
-     - rem单位是相当于HTML标签字号计算结果
-     - 1rem = 1HTML字号大小
-   - 使用步骤
-     1. 给HTML标签加字号 `font-size: xxpx;`
-     2. 使用rem单位书写尺寸
-  #### 媒体查询
-   ![媒体查询](../1_Html_Css/2_images/媒体查询.png)
-  #### rem适配
-   - 步骤
-     1. 使用媒体查询，给不同的视口的屏幕设置不同的HTML字号
-     2. 使用rem单位书写尺寸
+### 移动端适配 `rem` `vw`
+#### rem
+  - rem介绍
+    - rem单位，是相对单位
+    - rem单位是相当于HTML标签字号计算结果
+    - 1rem = 1HTML字号大小
+  - 使用步骤
+    1. 给HTML标签加字号 `font-size: xxpx;`
+    2. 使用rem单位书写尺寸
+#### 媒体查询
+  ![媒体查询](../1_Html_Css/2_images/媒体查询.png)
+#### rem适配
+  - 步骤
+    1. 使用媒体查询，给不同的视口的屏幕设置不同的HTML字号
+    2. 使用rem单位书写尺寸
 
-     ![rem适配](../1_Html_Css/2_images/rem适配.png)
-  #### rem-flexible.js
-   - flexible.js是手淘开发出的一个用来适配移动端的js库。
-   - 核心原理就是根据不同的视口宽度给网页中html根节点设置不同的font-size。
-  #### less
-   - 运算
-     1. 加减乘除直接写表达式
-     2. 除法要添加 小括号 / . `(100 / 4px)` `100 ./ 4px`
-   - 变量
-     1. 定义变量： `@变量名:数据;`
-     2. 使用变量： `CSS属性:@变量名;`
-     ![less变量的定义和使用](../1_Html_Css/2_images/less变量的定义和使用.png)
-   - 导入（在less中导入less）
-     - 作用：导入less公共样式文件
-     - 语法：导入: `@import "文件路径";`
-     - 提示：如果是less文件可以省略后缀
-   - 导出
-     - 写法：在less文件第一行文件添加 `// out: 存储URL`
-     - 提示：文件夹名称后面要添加 / 
-   - 禁止导出
-     - 写法：在less文件第一行添加： `// out: false`
+    ![rem适配](../1_Html_Css/2_images/rem适配.png)
+#### rem-flexible.js
+  - flexible.js是手淘开发出的一个用来适配移动端的js库。
+  - 核心原理就是根据不同的视口宽度给网页中html根节点设置不同的font-size。
+#### less
+  - 运算
+    1. 加减乘除直接写表达式
+    2. 除法要添加 小括号 / . `(100 / 4px)` `100 ./ 4px`
+  - 变量
+    1. 定义变量： `@变量名:数据;`
+    2. 使用变量： `CSS属性:@变量名;`
+    ![less变量的定义和使用](../1_Html_Css/2_images/less变量的定义和使用.png)
+  - 导入（在less中导入less）
+    - 作用：导入less公共样式文件
+    - 语法：导入: `@import "文件路径";`
+    - 提示：如果是less文件可以省略后缀
+  - 导出
+    - 写法：在less文件第一行文件添加 `// out: 存储URL`
+    - 提示：文件夹名称后面要添加 / 
+  - 禁止导出
+    - 写法：在less文件第一行添加： `// out: false`
 
-  #### vw vh
-   - 相对视口的尺寸计算的结果
-   - vw：viewport width 1vw = 1/100视口宽度
-   - vh：viewport height 1vh = 1/100视口高度
+#### vw vh
+  - 相对视口的尺寸计算的结果
+  - vw：viewport width 1vw = 1/100视口宽度
+  - vh：viewport height 1vh = 1/100视口高度
 
- ### 响应式网页
-  #### 媒体查询
-   - @media 关键词 媒体类型 and (媒体特性) { CSS代码 }
-     1. 关键词 and/only/not
-     2. 媒体类型
-        ![媒体查询-媒体类型](../1_Html_Css/2_images/媒体查询-媒体类型.png)
-     3. 媒体特性
-        ![媒体查询-媒体特性](../1_Html_Css/2_images/媒体查询-媒体特性.png)
-   - 简略写法
-     - 媒体特性
-       1. max-width >=最大宽度
-       2. min-width <=最小宽度
-     ```css
-     @media (媒体特性) {
-        选择器{
-          样式
-        }
-     }
-     ```
-     ![媒体查询](../1_Html_Css/2_images/媒体查询.png)
-   - 外部CSS写法
-     ![媒体查询-外部CSS](../1_Html_Css/2_images/媒体查询-外部CSS.png)
-  #### Bootstrap
-   - 引入
-   - 调用类名 例 响应式版心： container
-     ![Bootstrap-使用](../1_Html_Css/2_images/Bootstrap-使用.png)
-   ##### 栅格系统
-  ![栅格系统](../1_Html_Css/2_images/栅格系统.png)
-  ![栅格系统实例代码](../1_Html_Css/2_images/栅格系统实例代码.png)
-  
+### 响应式网页
+#### 媒体查询
+  - @media 关键词 媒体类型 and (媒体特性) { CSS代码 }
+    1. 关键词 and/only/not
+    2. 媒体类型
+      ![媒体查询-媒体类型](../1_Html_Css/2_images/媒体查询-媒体类型.png)
+    3. 媒体特性
+      ![媒体查询-媒体特性](../1_Html_Css/2_images/媒体查询-媒体特性.png)
+  - 简略写法
+    - 媒体特性
+      1. max-width >=最大宽度
+      2. min-width <=最小宽度
+    ```css
+    @media (媒体特性) {
+      选择器{
+        样式
+      }
+    }
+    ```
+    ![媒体查询](../1_Html_Css/2_images/媒体查询.png)
+  - 外部CSS写法
+    ![媒体查询-外部CSS](../1_Html_Css/2_images/媒体查询-外部CSS.png)
+#### Bootstrap
+  - 引入
+  - 调用类名 例 响应式版心： container
+    ![Bootstrap-使用](../1_Html_Css/2_images/Bootstrap-使用.png)
+  ##### 栅格系统
+![栅格系统](../1_Html_Css/2_images/栅格系统.png)
+![栅格系统实例代码](../1_Html_Css/2_images/栅格系统实例代码.png)
