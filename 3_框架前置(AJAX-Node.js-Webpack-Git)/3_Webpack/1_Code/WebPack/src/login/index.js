@@ -22,20 +22,20 @@ console.log('checkCode', checkCode('123456'))
  * 3.3 打包并且手动复制网页到 dist 下，引入打包后的 js 运行
  */
 // 3.2 编写核心 JS 逻辑代码
-document.querySelector('.btn').addEventListener('click', () => {
-  const phone = document.querySelector('.login-form [name=mobile]').value
-  const code = document.querySelector('.login-form [name=code]').value
+// document.querySelector('.btn').addEventListener('click', () => {
+//   const phone = document.querySelector('.login-form [name=mobile]').value
+//   const code = document.querySelector('.login-form [name=code]').value
 
-  if (!checkPhone(phone)){
-    console.log('手机号长度必须是11位')
-    return
-  }
-  if(!checkCode(code)){
-    console.log('验证码长度必须是6位')
-    return
-  }
-  console.log('提交到服务器登录...')
-})
+//   if (!checkPhone(phone)){
+//     console.log('手机号长度必须是11位')
+//     return
+//   }
+//   if(!checkCode(code)){
+//     console.log('验证码长度必须是6位')
+//     return
+//   }
+//   console.log('提交到服务器登录...')
+// })
 
 /**
  * 目标4：使用 html-webpack-plugin 插件生成 html 网页文件，并引入打包后的其他资源
@@ -77,7 +77,7 @@ import './index.css'
  *  8.4 打包后观察效果
  */
 // 8.1 新建 less 代码（设置背景图）并引入到 src/login/index.js 中
-
+import './index.less'
 
 /**
  * 目标9：打包资源模块（图片处理）
@@ -86,7 +86,10 @@ import './index.css'
  */
 // 9.1 创建 img 标签并动态添加到页面，配置 webpack.config.js
 // 注意：js 中引入本地图片资源要用 import 方式（如果是网络图片http地址，字符串可以直接写）
-
+import imgObj from './assets/logo.png'
+const theImg = document.createElement('img')
+theImg.src = imgObj
+document.querySelector('.login-wrap').appendChild(theImg)
 
 /**
  * 目标10：完成登录功能
@@ -95,7 +98,36 @@ import './index.css'
  *  10.3 导入并编写逻辑代码，打包后运行观察效果
  */
 // 10.3 导入并编写逻辑代码，打包后运行观察效果
+import myAxios from '../utils/request.js'
+import { myAlert } from '../utils/alert.js'
+document.querySelector('.btn').addEventListener('click', () => {
+  const phone = document.querySelector('.login-form [name=mobile]').value
+  const code = document.querySelector('.login-form [name=code]').value
 
+  if (!checkPhone(phone)){
+    console.log('手机号长度必须是11位')
+    myAlert(false,'手机号长度必须是11位')
+    return
+  }
+  if(!checkCode(code)){
+    console.log('验证码长度必须是6位')
+    myAlert(false,'验证码长度必须是6位')
+    return
+  }
+  console.log('提交到服务器登录...')
+  myAxios({
+    url: '/v1_0/authorizations',
+    method: 'POST',
+    data:{
+      mobile: phone,
+      code: code
+    }
+  }).then(res => {
+    myAlert(true,'登录成功')
+  }).catch(err => {
+    myAlert(false,err.response.data.message)
+  })
+})
 
 /**
  * 目标11：配置开发服务器环境 webpack-dev-server

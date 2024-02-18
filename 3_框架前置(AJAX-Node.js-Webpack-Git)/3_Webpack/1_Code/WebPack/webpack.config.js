@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
+  // 打包模式（development 开发模式-使用相关的内置优化）
+  // mode: 'development',
   // 入口
   entry: path.resolve(__dirname, 'src/login/index.js'),
   // 出口
@@ -27,6 +29,22 @@ module.exports = {
         test: /\.css$/i,
         // use: ["style-loader","css-loader"]
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.less$/i,
+        use: [
+          // compiles Lsee to CSS
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset',
+        generator: {
+          filename: 'assest/[hash][ext][query]'
+        }
       }
     ]
   },

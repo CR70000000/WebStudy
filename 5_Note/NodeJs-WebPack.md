@@ -190,3 +190,38 @@
     4. 打包后观察效果
   - 注意：less-loader 需要配合 less 软件包使用
   ![打包less代码](../3_框架前置(AJAX-Node.js-Webpack-Git)/3_Webpack/2_images/打包less代码.png)
+
+  #### 打包图片
+  - 资源模块：Webpack5 内置资源模块（字体，图片等）打包，无需额外 loader
+  - 步骤：
+    1. 配置 webpack.config.js 让 Webpack 拥有打包图片功能
+       - 占位符 【hash】对模块内容做算法计算，得到映射的数字字母组合的字符串
+       - 占位符 【ext】使用当前模块原本的占位符，例如：.png / .jpg 等字符串
+       - 占位符 【query】保留引入文件时代码中查询参数（只有 URL 下生效）
+    2. 打包后观察效果和区别
+    - 注意：判断临界值默认为 8KB
+      - 大于 8KB 文件：发送一个单独的文件并导出 URL 地址
+      - 小于 8KB 文件：导出一个 data URI（base64字符串）
+  ![打包图片](../3_框架前置(AJAX-Node.js-Webpack-Git)/3_Webpack/2_images/打包图片.png)
+
+  #### 搭建开发环境
+  - 问题：之前改代码，需重新打包才能运行查看，效率很低
+  - 开发环境：配置 webpack-dev-server 快速开发应用程序
+  - 作用：启动 Web 服务，自动检测代码变化，热更新到网页
+  - 注意：dist 目录和打包内容是在内存里（更新快）
+  - 步骤：
+    1. 下载 webpack-dev-server 软件包到当前项目
+    2. 设置模式为开发模式，并配置自定义命令
+    3. 使用 npm run dev 来启动开发服务器，试试热更新效果
+  ![搭建开发环境](../3_框架前置(AJAX-Node.js-Webpack-Git)/3_Webpack/2_images/搭建开发环境.png)
+
+  #### 打包模式
+  - 打包模式：告知 Webpack 使用相应模式的内置优化
+  - 分类：
+    ![打包模式分类](../3_框架前置(AJAX-Node.js-Webpack-Git)/3_Webpack/2_images/打包模式分类.png)
+  - 设置：
+    - 方式1：在 webpack.config.js 配置文件设置 mode 选项
+    - 方式2：在 package.json 命令行设置 mode 参数
+  - 注意：命令行设置的优先级高于配置文件中的，推荐用命令行设置
+  ![打包模式](../3_框架前置(AJAX-Node.js-Webpack-Git)/3_Webpack/2_images/打包模式.png)
+
